@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/global.ts'
+import 'bulma/css/bulma.min.css'
 
 import { AppProps } from 'next/app'
 import GlobalStyle from '../styles/global'
