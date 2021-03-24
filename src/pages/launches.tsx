@@ -1,78 +1,59 @@
 import React from 'react'
 import Link from 'next/link'
 import { mySlugify } from '../helpers'
-import { gql } from '@apollo/client'
-import client from '../apollo-client'
-import { Country } from '../types/index'
+import { spacexService } from '../apollo-client'
+import { Mission } from '../types/graphql'
 import { GetStaticProps } from 'next'
 import CardList from '../styles/launches'
 
 export interface LaunchProps {
-  countries: Country[]
+  launchesPast: Mission[]
 }
 
 export const getStaticProps: GetStaticProps = async context => {
-  const { data } = await client.query({
-    query: gql`
-      query Countries {
-        countries {
-          code
-          name
-          emoji
-        }
-      }
-    `
-  })
-
+  const { loading, error = null, data } = await spacexService().GET_LAUNCHES()
+  const launchesPast: Mission[] = data.launchesPast
   return {
     props: {
-      countries: data.countries.slice(0, 4)
-    }
+      loading,
+      error,
+      launchesPast: launchesPast
+    },
+    revalidate: 24 * 60 * 60
   }
 }
-
-/*
-<div key={country.code} className={'card'}>
-          <h3>{country.name}</h3>
-          <p>
-            {country.code} - {country.emoji}
-          </p>
-        </div>
-        */
-
-const Launches: React.FunctionComponent = (props: LaunchProps) => {
+const LaunchesPage: React.FC<LaunchProps> = (props: LaunchProps) => {
   return (
     <>
       <CardList>
         <div className="container">
-          {props.countries.map((country: Country) => (
-            <div key={country.code} className="card">
-              <div className="card-content">
-                <div className="media">
-                  <div className="media-left">
-                    <figure className="image is-48x48">{country.emoji}</figure>
-                  </div>
-                  <div className="media-content">
-                    <p className="title is-4">{country.name}</p>
-                    <p className="subtitle is-6">{country.code}</p>
+          {props.launchesPast &&
+            props.launchesPast.map((mission: Mission) => (
+              <div key={mission.name} className="card">
+                <div className="card-content">
+                  <div className="media">
+                    <div className="media-content">
+                      <p className="title is-4">
+                        {mission.name}
+                        {mission.id}
+                      </p>
+                      <Link
+                        href={{
+                          pathname: '/mission/[slug]',
+                          query: { slug: `${mySlugify(String(mission.id), true)}` }
+                        }}
+                      >
+                        <a>{mission.name}</a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </CardList>
-
-      <Link
-        href={{
-          pathname: '/mission/[slug]',
-          query: { slug: `${mySlugify('bla-asda-???~~~~bla', true)}` }
-        }}
-      >
-        <a>blabla</a>
-      </Link>
     </>
   )
 }
 
-export default Launches
+export default LaunchesPage

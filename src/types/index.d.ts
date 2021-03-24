@@ -1,3 +1,4 @@
+/* eslint-disable */
 export interface IPost {
   id: number
   title: string
@@ -11,11 +12,16 @@ export type Country = {
 }
 
 export type Mission = {
-  description: string
-  id: ID
-  manufacturers: [string]
-  name: string
-  twitter: string
-  website: string
-  wikipedia: string
+  mission_name: string
+  // id: number
+  // name: string
 }
+// export type Mission = {
+//   description: string
+//   id: ID
+//   manufacturers: [string]
+//   name: string
+//   twitter: string
+//   website: string
+//   wikipedia: string
+// }
