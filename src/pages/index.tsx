@@ -1,9 +1,8 @@
 import React from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import ReactLogo from '../assets/react.svg'
 
-interface Props {}
+interface Props { }
 
 const Home: React.FC<Props> = Props => {
   return (
@@ -14,9 +13,7 @@ const Home: React.FC<Props> = Props => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <div className={styles.svg}>
-            <ReactLogo width="80" height="80" />
-          </div>
+          <div className={styles.svg}></div>
           Welcome to <a>Next.js!</a>
         </h1>
       </main>

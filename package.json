@@ -8,8 +8,11 @@
     "start": "next start"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.12",
     "@svgr/webpack": "^5.5.0",
+    "@types/graphql": "^14.5.0",
     "@zeit/next-typescript": "^1.1.1",
+    "graphql": "^15.5.0",
     "next": "10.0.9",
     "react": "17.0.1",
     "react-dom": "17.0.1",
