@@ -1,8 +1,13 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
-import { GET_LAUNCH_DETAIL, GET_LAUNCHES, GET_MISSIONS, GET_COUNTRIES } from './apollo-queries'
+import {
+  GET_LAUNCH_DETAIL,
+  GET_LAUNCHES,
+  GET_MISSIONS,
+  GET_COUNTRIES
+} from './apollo-queries'
 
 interface Dic {
-  [key: string]: string
+  [key: string]: number | string
 }
 
 const clientCountries = new ApolloClient({
@@ -19,6 +24,12 @@ const spacexService = () => ({
   GET_LAUNCHES: (variables?: Dic) =>
     clientSpaceX.query({
       query: GET_LAUNCHES,
+      variables: { limit: 10, ...variables }
+    }),
+
+  GET_LAUNCHES_DETAIL: (variables?: Dic) =>
+    clientSpaceX.query({
+      query: GET_LAUNCH_DETAIL,
       variables: variables
     })
 })

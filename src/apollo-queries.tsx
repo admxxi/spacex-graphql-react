@@ -11,10 +11,39 @@ const GET_COUNTRIES = gql`
 `
 
 const GET_LAUNCHES = gql`
-  {
-    launchesPast(limit: 10) {
-      name: mission_name
+  query($limit: Int!) {
+    launchesPast(limit: $limit) {
       id
+      is_tentative
+      upcoming
+      mission_name
+      links {
+        article_link
+        video_link
+        flickr_images
+        mission_patch
+      }
+      launch_date_utc
+      details
+    }
+  }
+`
+
+const GET_LAUNCH_DETAIL = gql`
+  query($id: ID!) {
+    launch(id: $id) {
+      id
+      is_tentative
+      upcoming
+      mission_name
+      links {
+        article_link
+        video_link
+        flickr_images
+        mission_patch
+      }
+      launch_date_utc
+      details
     }
   }
 `
@@ -27,18 +56,23 @@ const GET_MISSIONS = gql`
   }
 `
 
-const GET_LAUNCH_DETAIL = gql`
+const GET_MISSION_DETAIL = gql`
   query($id: ID!) {
-    launch(id: $id) {
+    missions(id: $id) {
+      wikipedia
+      website
+      twitter
+      name
+      manufacturers
       id
-      details
-      links {
-        article_link
-        video_link
-        wikipedia
-      }
+      description
     }
   }
 `
-
-export { GET_LAUNCH_DETAIL, GET_LAUNCHES, GET_MISSIONS, GET_COUNTRIES }
+export {
+  GET_LAUNCH_DETAIL,
+  GET_MISSION_DETAIL,
+  GET_LAUNCHES,
+  GET_MISSIONS,
+  GET_COUNTRIES
+}
