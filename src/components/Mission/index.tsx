@@ -1,11 +1,12 @@
 import React from 'react'
 import { Launch as ILaunch } from '../../@types/graphql'
+import { Button } from '../Button'
 
 interface MissionProps {
   launch: ILaunch
 }
 
-const Mission = ({ launch }: MissionProps) => {
+const Mission = ({ launch }: MissionProps): JSX.Element => {
   console.log(launch)
   const flickerImages = launch.links?.flickr_images
     ? launch.links?.flickr_images
@@ -17,7 +18,7 @@ const Mission = ({ launch }: MissionProps) => {
         <div className="card-image">
           <figure className="image is-4by3">
             <img
-              src={flickerImages[0]}
+              src={String(flickerImages[0])}
               alt="Placeholder image"
               width="100%"
               height="auto"
@@ -50,6 +51,7 @@ const Mission = ({ launch }: MissionProps) => {
           {launch.links?.video_link && (
             <a href={launch.links?.video_link}>Youtube video</a>
           )}
+          <Button type="primary" text={'test'} onclick={() => alert('hi')} />
         </div>
       </div>
     </div>
