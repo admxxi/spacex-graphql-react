@@ -1,21 +1,18 @@
 import React from 'react'
-import { GetStaticProps, GetStaticPaths } from 'next'
-import { clientSpaceX } from '../../apollo-client'
-import { GET_LAUNCHES, GET_LAUNCH_DETAIL } from '../../apollo-queries'
-import { Launch } from '../../types/graphql'
-import CardList from '../../styles/launches'
-import { ParsedUrlQuery } from 'querystring'
 import { useRouter } from 'next/router'
+import { GetStaticProps, GetStaticPaths } from 'next'
+import { spacexService } from '../../apollo-client'
+import { Launch } from '../../@types/graphql'
+import { ParsedUrlQuery } from 'querystring'
+import Mission from '../../components/Mission'
 import Spinner from '../../components/Spinner'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {
-    data: { launchesPast }
-  } = await clientSpaceX.query({
-    query: GET_LAUNCHES
-  })
+    data: { launchesPast: launches }
+  } = await spacexService().GET_LAUNCHES()
 
-  const paths = launchesPast.map((launch: Launch) => {
+  const paths = launches.map((launch: Launch) => {
     if (launch) {
       return {
         params: {
@@ -36,6 +33,7 @@ interface Params extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async context => {
   const params = context.params as Params
+
   if (!params.slug) {
     return {
       props: { error: 'invalid param' }
@@ -46,7 +44,9 @@ export const getStaticProps: GetStaticProps = async context => {
     loading,
     error = null,
     data: { launch }
-  } = await clientSpaceX.query({ query: GET_LAUNCH_DETAIL, variables: { id: params.slug } })
+  } = await spacexService().GET_LAUNCHES_DETAIL({
+    id: params.slug
+  })
 
   return {
     props: {
@@ -64,39 +64,26 @@ interface Props {
   error: string
 }
 
-const Mission: React.FunctionComponent<Props> = ({ launch, loading, error, theme }) => {
+const MissionPage: React.FunctionComponent<Props> = ({ launch, loading }) => {
   const router = useRouter()
-
-  // If the page is not yet generated, this will be displayed
-  // initially until getStaticProps() finishes running
-  if (router.isFallback) {
-    return <Spinner theme={theme}></Spinner>
+  console.log(router)
+  if (loading || router.isFallback) {
+    return <Spinner></Spinner>
   }
 
   return (
-    <CardList>
-      {loading ? 'loading' : 'loaded'}
-      {launch ? (
-        <div className="container">
-          <div key={launch.id} className="card">
-            <div className="card-content">
-              <div className="media">
-                <div className="media-content">
-                  <p className="title is-4">
-                    {launch.id}
-                    {launch.details}
-                    {launch.links?.video_link && launch.links.video_link}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div className="container">
+      <div className="columns is-centered is-mobile">
+        <div className="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop">
+          {launch ? (
+            <Mission launch={launch}></Mission>
+          ) : (
+            <p>Mission not found</p>
+          )}
         </div>
-      ) : (
-        <p>Mission not found</p>
-      )}
-    </CardList>
+      </div>
+    </div>
   )
 }
 
-export default Mission
+export default MissionPage
