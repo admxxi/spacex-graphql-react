@@ -15,7 +15,7 @@ const Style = styled.div`
   }
 `
 
-const Launch = ({ mission }: LaunchProps) => {
+const Mission = ({ mission }: LaunchProps) => {
   console.log(mission)
 
   const launchDateLocale = new Date(
@@ -54,6 +54,6 @@ const Launch = ({ mission }: LaunchProps) => {
       </Link>
     </Style>
   )
-})``
+}
 
-export default Launch
+export default Mission

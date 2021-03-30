@@ -1,2 +1,2 @@
-import MissionList from './MissionDetail'
+import MissionList from './MissionList'
 export { MissionList }

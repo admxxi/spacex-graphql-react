@@ -18,12 +18,12 @@ const MissionDetailStyled = styled.div`
     overflow: hidden;
   }
 
-  img {
+  .card-image img {
     objectfit: 'cover';
     transition: 'transform .3s ease';
   }
 
-  &:hover img {
+  &:hover .card-image img {
     transform: scale(1.2);
   }
 `
@@ -81,7 +81,7 @@ const MissionDetail = ({ launch }: MissionDetailProps): JSX.Element => {
         ''
       )}
       <div className="card-content">
-        {launch.links?.mission_patch && (
+        {launch.links?.mission_patch ? (
           <div className="media is-align-items-center">
             <div className="media-left">
               <figure className="image is-48x48">
@@ -98,6 +98,8 @@ const MissionDetail = ({ launch }: MissionDetailProps): JSX.Element => {
               <p className="ma-0 title is-4">{launch.mission_name}</p>
             </div>
           </div>
+        ) : (
+          <p className="ma-0 title is-4">{launch.mission_name}</p>
         )}
         <div className="content">
           <p>{launch.details}</p>

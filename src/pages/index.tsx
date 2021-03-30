@@ -5,7 +5,7 @@ import {
   Mission as IMission
 } from '../@types/graphql'
 import { GetStaticProps } from 'next'
-import MissionList from '../components/MissionList/index'
+import { MissionList } from '../components/MissionList/index'
 
 export interface MissionPageProps {
   missions: IMission[]

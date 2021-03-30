@@ -4,7 +4,7 @@ import { GetStaticProps, GetStaticPaths } from 'next'
 import { spacexService } from '../../apollo-client'
 import { Launch } from '../../@types/graphql'
 import { MissionDetail } from '../../components/MissionDetail'
-import Spinner from '../../components/Spinner'
+import { Spinner } from '../../components/Spinner'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {
