@@ -1,11 +1,11 @@
 import React from 'react'
 import { spacexService } from '../apollo-client'
-import { Mission as IMission } from '../@types/graphql'
+import { Mission as IMission, Launch as ILaunch } from '../@types/graphql'
 import { GetStaticProps } from 'next'
 import { MissionList } from '../components/MissionList/index'
 
 export interface MissionPageProps {
-  missions: IMission[]
+  missions: ILaunch[]
   loading: boolean
   error: string
 }

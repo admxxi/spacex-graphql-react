@@ -10,7 +10,7 @@ interface MissionDetailProps {
 interface SeeMoreType {
   label: string
   link?: string
-  icon?: string
+  icon: string
 }
 
 const MissionDetailStyled = styled.div`
