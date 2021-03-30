@@ -2,8 +2,6 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 import {
   GET_LAUNCH_DETAIL,
   GET_LAUNCHES,
-  GET_MISSIONS,
-  GET_COUNTRIES,
   GET_MISSIONS_RESULT,
   GET_LAUNCH_DATE_BY_MISSION
 } from './apollo-queries'
@@ -12,13 +10,8 @@ interface Dic {
   [key: string]: number | string
 }
 
-const clientCountries = new ApolloClient({
-  uri: 'https://countries.trevorblades.com',
-  cache: new InMemoryCache()
-})
-
 const clientSpaceX = new ApolloClient({
-  uri: 'https://api.spacex.land/graphql/',
+  uri: process.env.SPACEXGRAPHQL_ENDPOINT,
   cache: new InMemoryCache()
 })
 
@@ -48,4 +41,4 @@ const spacexService = () => ({
     })
   }
 })
-export { clientCountries, clientSpaceX, spacexService }
+export { spacexService }

@@ -34,17 +34,6 @@ const MissionDetail = ({ launch }: MissionDetailProps): JSX.Element => {
     ? launch.links?.flickr_images
     : []
 
-  const imageStyle = {
-    objectFit: 'cover',
-    transition: 'transform .5s ease'
-  }
-
-  const figureStyle = {
-    '&:hover img': {
-      transform: 'scale(1.5)'
-    }
-  }
-
   const SeeMoreData: SeeMoreType[] = []
 
   if (launch.links?.video_link) {
@@ -73,7 +62,6 @@ const MissionDetail = ({ launch }: MissionDetailProps): JSX.Element => {
               alt="Placeholder image"
               width="100%"
               height="auto"
-              style={imageStyle}
             />
           </figure>
         </div>
