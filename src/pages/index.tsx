@@ -38,7 +38,7 @@ export const getStaticProps: GetStaticProps = async context => {
 const MissionPage: React.FC<MissionPageProps> = (props: MissionPageProps) => {
   return (
     <section className="hero is-fullheight">
-      <div className="hero-body has-text-centered">
+      <div className="hero-body">
         {props.error ? (
           'Error: ' + props.error
         ) : (
