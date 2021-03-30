@@ -3,7 +3,9 @@ import {
   GET_LAUNCH_DETAIL,
   GET_LAUNCHES,
   GET_MISSIONS,
-  GET_COUNTRIES
+  GET_COUNTRIES,
+  GET_MISSIONS_RESULT,
+  GET_LAUNCH_DATE_BY_MISSION
 } from './apollo-queries'
 
 interface Dic {
@@ -31,6 +33,19 @@ const spacexService = () => ({
     clientSpaceX.query({
       query: GET_LAUNCH_DETAIL,
       variables: variables
+    }),
+
+  GET_MISSIONS_RESULT: (variables?: Dic) =>
+    clientSpaceX.query({
+      query: GET_MISSIONS_RESULT,
+      variables: { limit: 10, ...variables }
+    }),
+
+  GET_LAUNCH_DATE_BY_MISSION: (variables?: Dic) => {
+    return clientSpaceX.query({
+      query: GET_LAUNCH_DATE_BY_MISSION,
+      variables: variables
     })
+  }
 })
 export { clientCountries, clientSpaceX, spacexService }

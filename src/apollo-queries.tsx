@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client'
 
-const GET_COUNTRIES = gql`
+export const GET_COUNTRIES = gql`
   query Countries {
     countries {
       code
@@ -10,31 +10,21 @@ const GET_COUNTRIES = gql`
   }
 `
 
-const GET_LAUNCHES = gql`
+export const GET_LAUNCHES = gql`
   query($limit: Int!) {
     launchesPast(limit: $limit) {
       id
-      is_tentative
-      upcoming
       mission_name
-      links {
-        article_link
-        video_link
-        flickr_images
-        mission_patch
-      }
       launch_date_utc
       details
     }
   }
 `
 
-const GET_LAUNCH_DETAIL = gql`
+export const GET_LAUNCH_DETAIL = gql`
   query($id: ID!) {
     launch(id: $id) {
       id
-      is_tentative
-      upcoming
       mission_name
       links {
         article_link
@@ -42,13 +32,16 @@ const GET_LAUNCH_DETAIL = gql`
         flickr_images
         mission_patch
       }
+      ships {
+        name
+      }
       launch_date_utc
       details
     }
   }
 `
 
-const GET_MISSIONS = gql`
+export const GET_MISSIONS = gql`
   {
     missions(find: { name: $missions }) {
       name
@@ -56,7 +49,42 @@ const GET_MISSIONS = gql`
   }
 `
 
-const GET_MISSION_DETAIL = gql`
+export const GET_LAUNCH_DATE_BY_MISSION = gql`
+  query($mission_id: string!) {
+    launches(find: { mission_id: $mission_id }) {
+      launch_date_utc
+    }
+  }
+`
+
+export const GET_LAUNCH_DETAILS_BY_MISSION = gql`
+  query($mission_id: ID!) {
+    launches(find: { mission_id: $mission_id }) {
+      ships {
+        id
+      }
+      mission_id
+      links {
+        flickr_images
+        video_link
+        wikipedia
+      }
+      launch_date_utc
+    }
+  }
+`
+
+export const GET_MISSIONS_RESULT = gql`
+  query($limit: Int!) {
+    missionsResult(limit: $limit) {
+      data {
+        id
+      }
+    }
+  }
+`
+
+export const GET_MISSION_DETAIL = gql`
   query($id: ID!) {
     missions(id: $id) {
       wikipedia
@@ -69,10 +97,3 @@ const GET_MISSION_DETAIL = gql`
     }
   }
 `
-export {
-  GET_LAUNCH_DETAIL,
-  GET_MISSION_DETAIL,
-  GET_LAUNCHES,
-  GET_MISSIONS,
-  GET_COUNTRIES
-}
