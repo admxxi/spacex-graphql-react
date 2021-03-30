@@ -16,8 +16,6 @@ const Style = styled.div`
 `
 
 const Mission = ({ mission }: LaunchProps) => {
-  console.log(mission)
-
   const launchDateLocale = new Date(
     mission.launch_date_utc
   ).toLocaleDateString()

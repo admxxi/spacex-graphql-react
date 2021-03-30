@@ -1,9 +1,6 @@
 import React from 'react'
 import { spacexService } from '../apollo-client'
-import {
-  MissionResult as IMissionResult,
-  Mission as IMission
-} from '../@types/graphql'
+import { Mission as IMission } from '../@types/graphql'
 import { GetStaticProps } from 'next'
 import { MissionList } from '../components/MissionList/index'
 
@@ -14,28 +11,39 @@ export interface MissionPageProps {
 }
 
 export const getStaticProps: GetStaticProps = async context => {
-  const {
-    loading,
-    error = null,
-    data: { launchesPast }
-  } = await spacexService().GET_LAUNCHES({
-    limit: 10
-  })
+  try {
+    const { loading, error = null, data } = await spacexService().GET_LAUNCHES({
+      limit: 10
+    })
 
-  return {
-    props: {
-      loading,
-      error,
-      missions: launchesPast
-    },
-    revalidate: 24 * 60 * 60
+    return {
+      props: {
+        loading,
+        error,
+        missions: data.launchesPast
+      },
+      revalidate: 24 * 60 * 60
+    }
+  } catch (error) {
+    return {
+      props: {
+        loading: false,
+        error: error.toString(),
+        mission: []
+      },
+      revalidate: 24 * 60 * 60
+    }
   }
 }
 const MissionPage: React.FC<MissionPageProps> = (props: MissionPageProps) => {
   return (
     <section className="hero is-fullheight">
-      <div className="hero-body">
-        <MissionList missions={props.missions}></MissionList>
+      <div className="hero-body has-text-centered">
+        {props.error ? (
+          'Error: ' + props.error
+        ) : (
+          <MissionList missions={props.missions}></MissionList>
+        )}
       </div>
     </section>
   )
