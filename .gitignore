@@ -7,6 +7,7 @@
 
 # testing
 /coverage
+__snapshots__
 
 # next.js
 /.next/
@@ -39,3 +40,4 @@ yarn-error.log*
 *.ipr
 .idea/
 .vscode/
+

@@ -1,26 +1,44 @@
 import React from 'react'
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { spacexService } from '../apollo-client'
+import {
+  MissionResult as IMissionResult,
+  Mission as IMission
+} from '../@types/graphql'
+import { GetStaticProps } from 'next'
+import { MissionList } from '../components/MissionList/index'
 
-interface Props { }
+export interface MissionPageProps {
+  missions: IMission[]
+  loading: boolean
+  error: string
+}
 
-const Home: React.FC<Props> = Props => {
+export const getStaticProps: GetStaticProps = async context => {
+  const {
+    loading,
+    error = null,
+    data: { launchesPast }
+  } = await spacexService().GET_LAUNCHES({
+    limit: 10
+  })
+
+  return {
+    props: {
+      loading,
+      error,
+      missions: launchesPast
+    },
+    revalidate: 24 * 60 * 60
+  }
+}
+const MissionPage: React.FC<MissionPageProps> = (props: MissionPageProps) => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          <div className={styles.svg}></div>
-          Welcome to <a>Next.js!</a>
-        </h1>
-      </main>
-
-      <footer className={styles.footer}></footer>
-    </div>
+    <section className="hero is-fullheight">
+      <div className="hero-body">
+        <MissionList missions={props.missions}></MissionList>
+      </div>
+    </section>
   )
 }
 
-export default Home
+export default MissionPage
