@@ -66,7 +66,6 @@ interface Props {
 
 const MissionPage: React.FunctionComponent<Props> = ({ launch, loading }) => {
   const router = useRouter()
-  console.log(router)
   if (loading || router.isFallback) {
     return <Spinner></Spinner>
   }

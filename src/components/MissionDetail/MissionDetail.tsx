@@ -19,7 +19,7 @@ const MissionDetailStyled = styled.div`
   }
 
   .card-image img {
-    object-fit: 'cover';
+    object-fit: cover;
     transition: transform 0.3s ease;
   }
 
@@ -29,7 +29,6 @@ const MissionDetailStyled = styled.div`
 `
 
 const MissionDetail = ({ launch }: MissionDetailProps): JSX.Element => {
-  console.log(launch)
   const flickerImages = launch.links?.flickr_images
     ? launch.links?.flickr_images
     : []
