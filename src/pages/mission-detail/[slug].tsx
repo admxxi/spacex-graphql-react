@@ -5,6 +5,7 @@ import { spacexService } from '../../apollo-client'
 import { Launch } from '../../@types/graphql'
 import { MissionDetail } from '../../components/MissionDetail'
 import { Spinner } from '../../components/Spinner'
+import { ParsedUrlQuery } from 'querystring'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const {

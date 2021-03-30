@@ -1,10 +1,10 @@
 import React from 'react'
 import styled, { withTheme } from 'styled-components'
 import { Mission } from '../Mission'
-import { Mission as IMission } from '../../@types/graphql'
+import { Mission as IMission, Launch as ILaunch } from '../../@types/graphql'
 
 interface MissionListProps {
-  missions?: IMission[]
+  missions?: ILaunch[]
 }
 
 const Style = styled.div`
@@ -27,7 +27,7 @@ const MissionList = ({ missions }: MissionListProps): JSX.Element => {
       <h1 className="title is-2 my-3">Last Launches 🚀</h1>
       <div className={'container'}>
         {missions &&
-          missions.map((mission: IMission) => (
+          missions.map((mission: ILaunch) => (
             <Mission key={mission.id} mission={mission} />
           ))}
       </div>

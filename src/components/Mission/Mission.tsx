@@ -15,7 +15,7 @@ const Style = styled.div`
   }
 `
 
-const Mission = ({ mission }: LaunchProps) => {
+const Mission = ({ mission }: LaunchProps): JSX.Element => {
   const launchDateLocale = new Date(
     mission.launch_date_utc
   ).toLocaleDateString()

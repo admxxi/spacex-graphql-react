@@ -9,7 +9,7 @@ Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 import { ThemeProvider } from 'styled-components'
-import { GlobalStyles, theme } from '../styles/theme.ts'
+import { GlobalStyles, theme } from '../styles/theme'
 import 'font-awesome/css/font-awesome.css'
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
