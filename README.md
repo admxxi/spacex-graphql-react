@@ -1,7 +1,7 @@
 # SpaceX Graphql ReactJs
 
-Wireframe
-<img src="public\wireframe.png" width="600px" height="auto">
+| <img src="public\wireframe.png" alt="Wireframe" width="600px" height="auto"> |
+| Wireframe |
 
 repo: [https://github.com/admxxi/spacex-graphql-react](https://github.com/admxxi/spacex-graphql-react)
 
