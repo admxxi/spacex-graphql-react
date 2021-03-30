@@ -68,7 +68,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     font-size: 1.6rem;
-    font-family: ${props => props.theme.font.family.default};
+    font-family: ${({ theme }) => theme.font.family.default};
     height: 100%;
     min-height: 100vh;
     background: ${({ theme }) => theme.colors.background};

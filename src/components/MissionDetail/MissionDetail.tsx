@@ -19,8 +19,8 @@ const MissionDetailStyled = styled.div`
   }
 
   .card-image img {
-    objectfit: 'cover';
-    transition: 'transform .3s ease';
+    object-fit: 'cover';
+    transition: transform 0.3s ease;
   }
 
   &:hover .card-image img {
