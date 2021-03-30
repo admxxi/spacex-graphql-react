@@ -13,35 +13,33 @@ interface ButtonProps {
   text: string
   onclick(): void
   disabled: boolean
-  size: number
+  size?: number
   icon: string
 }
 
-const Button = styled(
-  ({
-    type = ButtonType.primary,
-    size = 2,
-    text = 'Button',
-    icon,
-    onclick,
-    disabled
-  }: ButtonProps) => {
-    return (
-      <button
-        type="button"
-        className={`button is-large is-link is-light is-${type} is-${size}`}
-        disabled={disabled}
-        onClick={onclick}
-      >
-        {icon && (
-          <span className="icon">
-            <i className={`fa fa-${icon}`}></i>
-          </span>
-        )}
-        <span>{text}</span>
-      </button>
-    )
-  }
-)``
+const Button = ({
+  type = ButtonType.primary,
+  size = 2,
+  text = 'Button',
+  icon,
+  onclick,
+  disabled
+}: ButtonProps): JSX.Element => {
+  return (
+    <button
+      type="button"
+      className={`button is-large is-link is-light is-${type} is-${size}`}
+      disabled={disabled}
+      onClick={onclick}
+    >
+      {typeof icon === 'string' && (
+        <span className="icon">
+          <i className={`fa fa-${icon}`}></i>
+        </span>
+      )}
+      <span>{text}</span>
+    </button>
+  )
+}
 
 export default Button
