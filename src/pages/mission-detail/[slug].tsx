@@ -3,8 +3,7 @@ import { useRouter } from 'next/router'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { spacexService } from '../../apollo-client'
 import { Launch } from '../../@types/graphql'
-import { ParsedUrlQuery } from 'querystring'
-import Mission from '../../components/Mission'
+import { MissionDetail } from '../../components/MissionDetail'
 import Spinner from '../../components/Spinner'
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -72,17 +71,21 @@ const MissionPage: React.FunctionComponent<Props> = ({ launch, loading }) => {
   }
 
   return (
-    <div className="container">
-      <div className="columns is-centered is-mobile">
-        <div className="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop">
-          {launch ? (
-            <Mission launch={launch}></Mission>
-          ) : (
-            <p>Mission not found</p>
-          )}
+    <section className="hero is-fullheight">
+      <div className="hero-body">
+        <div className="container">
+          <div className="columns is-centered is-mobile">
+            <div className="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop">
+              {launch ? (
+                <MissionDetail launch={launch}></MissionDetail>
+              ) : (
+                <p>Mission not found</p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
