@@ -42,9 +42,9 @@ const Mission = ({ mission }: LaunchProps): JSX.Element => {
                 <p className="subtitle is-4 mt-2">
                   {launchDetails ? launchDetails : 'No description available'}
                 </p>
-                <span className="ma-1 subtitle is-5 is-italic has-text-right mx-1">
+                <div className="ma-1 subtitle is-5 is-italic has-text-right mx-1">
                   {launchDateLocale}
-                </span>
+                </div>
               </div>
             </div>
           </div>
