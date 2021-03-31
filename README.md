@@ -10,17 +10,20 @@
 4. Go inside the repo directory `cd spacex-graphql-react`
 5. Add and Check your environment variables `cp .env-example .env`
 6. Install dependencies `yarn install`
-===Runners====
+- Runners
 7. Run dev environment `yarn dev`
 8. Run the tests `yarn test` // watch `yarn test --watchAll`
 9. Build `yarn build`
 10. Build and run production environment `yarn build && yarn next`
 
 ### How did I decide which technologies to use as part of the solution
-I have chosen
+I have chosen NextJS main to be able to try the ISR (SSG and SSR) out.
+Using the getStaticProps to prepare the date before renders the page and getStaticPaths to define the pages to be rendered at build time.
+Caching route by demand is a great feature in my opinion as well, you can see it working by fetch any not pre-fetched route e.g (/mission-detail/xx) where "xx" can be a number between 10 and 99
+It's great to see the both worlds (front/back) working together and how it can provide better performance, better search engine optimisation, file-system routing. The structure itself can promote a  rapid feature development, maintainability and scalability.
 
 ### Improvements to be made
-
+They are all listed on the TODO list below.
 
 ### Project Routes
 #### Dashboard
