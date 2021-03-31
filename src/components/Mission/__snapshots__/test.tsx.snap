@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  class="Mission__Style-wzd66q-0 lhGnqF"
+>
+  <article
+    class="card"
+  >
+    <div
+      class="card-content"
+    >
+      <div
+        class="media is-align-content-center"
+      >
+        <div
+          class="media-content"
+        >
+          <a
+            class="is-link is-3"
+          >
+            Crew-1
+          </a>
+          <p
+            class="subtitle is-4 mt-2"
+          >
+            SpaceX will launch the first operational mission of its Crew Dragon vehicle as part of NASA's Commercial Crew Transpo...
+          </p>
+          <div
+            class="ma-1 subtitle is-5 is-italic has-text-right mx-1"
+          >
+            11/16/2020
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+`;

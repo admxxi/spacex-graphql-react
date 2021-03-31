@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  class="MissionDetail__MissionDetailStyled-pzpvdl-0 gQgBpR card d-inline-block"
+>
+  <div
+    class="card-image"
+  >
+    <figure
+      class="image is-5by3"
+    >
+      <img
+        alt="Placeholder image"
+        height="auto"
+        src="https://live.staticflickr.com/65535/50618376646_8f52c31fc4_o.jpg"
+        width="100%"
+      />
+    </figure>
+  </div>
+  <div
+    class="card-content"
+  >
+    <div
+      class="media is-align-items-center"
+    >
+      <div
+        class="media-left"
+      >
+        <figure
+          class="image is-48x48"
+        >
+          <img
+            alt="Placeholder image"
+            height="auto"
+            src="https://i.imgur.com/t5R4BAQ.png"
+            width="100%"
+          />
+        </figure>
+      </div>
+      <div
+        class="media-content"
+      >
+        <p
+          class="ma-0 title is-4"
+        >
+          Dummy Mission
+        </p>
+      </div>
+    </div>
+    <div
+      class="content"
+    >
+      <p>
+        dummy details
+      </p>
+    </div>
+    <p
+      class="buttons"
+    >
+      <button
+        class="button is-large is-link is-light is-info is-2"
+        type="button"
+      >
+        <span
+          class="icon"
+        >
+          <i
+            class="fa fa-youtube"
+          />
+        </span>
+        <span>
+          Watch Video
+        </span>
+      </button>
+      <button
+        class="button is-large is-link is-light is-info is-2"
+        type="button"
+      >
+        <span
+          class="icon"
+        >
+          <i
+            class="fa fa-wordpress"
+          />
+        </span>
+        <span>
+          See More
+        </span>
+      </button>
+    </p>
+  </div>
+</div>
+`;

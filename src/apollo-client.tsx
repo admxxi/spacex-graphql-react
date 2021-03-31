@@ -6,12 +6,13 @@ import {
   GET_LAUNCH_DATE_BY_MISSION
 } from './apollo-queries'
 
+
 interface Dic {
   [key: string]: number | string
 }
 
 const clientSpaceX = new ApolloClient({
-  uri: process.env.SPACEXGRAPHQL_ENDPOINT,
+  uri: process.env.SPACEX_GRAPHXXQL_ENDPOINT,
   cache: new InMemoryCache()
 })
 

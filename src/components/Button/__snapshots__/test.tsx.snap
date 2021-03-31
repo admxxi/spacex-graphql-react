@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<button
+  class="button is-large is-link is-light is-primary is-2"
+  type="button"
+>
+  <span>
+    Load more
+  </span>
+</button>
+`;
