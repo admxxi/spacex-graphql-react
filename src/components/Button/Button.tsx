@@ -1,5 +1,4 @@
 import React from 'react'
-import styled, { withTheme } from 'styled-components'
 
 export enum ButtonType {
   info = 'info',
@@ -11,10 +10,12 @@ export enum ButtonType {
 interface ButtonProps {
   type: ButtonType
   text: string
+
   onclick(): void
+
   disabled: boolean
   size?: number
-  icon: string
+  icon?: string
 }
 
 const Button = ({

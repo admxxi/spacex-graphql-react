@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  class="MissionList__Style-sc-1d8oiwg-0 cBukNc"
+>
+  <h1
+    class="title is-2 my-3"
+  >
+    Last Launches 🚀
+  </h1>
+  <div
+    class="container"
+  >
+    <div
+      class="Mission__Style-wzd66q-0 lhGnqF"
+    >
+      <article
+        class="card"
+      >
+        <div
+          class="card-content"
+        >
+          <div
+            class="media is-align-content-center"
+          >
+            <div
+              class="media-content"
+            >
+              <a
+                class="is-link is-3"
+              >
+                Dummy Mission 1
+              </a>
+              <p
+                class="subtitle is-4 mt-2"
+              >
+                dummy details
+              </p>
+              <div
+                class="ma-1 subtitle is-5 is-italic has-text-right mx-1"
+              >
+                11/16/2020
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div
+      class="Mission__Style-wzd66q-0 lhGnqF"
+    >
+      <article
+        class="card"
+      >
+        <div
+          class="card-content"
+        >
+          <div
+            class="media is-align-content-center"
+          >
+            <div
+              class="media-content"
+            >
+              <a
+                class="is-link is-3"
+              >
+                Dummy Mission 2
+              </a>
+              <p
+                class="subtitle is-4 mt-2"
+              >
+                dummy details
+              </p>
+              <div
+                class="ma-1 subtitle is-5 is-italic has-text-right mx-1"
+              >
+                11/16/2020
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<section
+  class="Spinner__Style-z810iv-0 HothN"
+>
+  <section
+    class="hero is-fullheight undefined"
+  >
+    <div
+      class="hero-body has-text-centered"
+    >
+      <div
+        class="container"
+      >
+        <img
+          class="img"
+          height="64"
+          src="/spacex-clipart2.png"
+          width="64"
+        />
+      </div>
+    </div>
+  </section>
+</section>
+`;

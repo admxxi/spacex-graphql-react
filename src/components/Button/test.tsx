@@ -1,21 +1,27 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Button, { ButtonType } from './Button'
+import { Button, ButtonType } from './index'
 
 it('renders correctly', () => {
   const fn = jest.fn()
   const { container } = render(
-    <Button text="Load more" disabled={false} onClick={fn} />
+    <Button
+      type={ButtonType.primary}
+      text="Load more"
+      disabled={false}
+      onclick={fn}
+    />
   )
   expect(container.firstChild).toMatchSnapshot()
 })
 
-it('should execute the click function', () => {
+it('should execute the click function once', () => {
   const fn = jest.fn()
   render(
     <Button
       text="See more"
+      icon={'youtube'}
       type={ButtonType.primary}
       disabled={false}
       onclick={fn}
