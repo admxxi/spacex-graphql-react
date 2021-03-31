@@ -18,9 +18,13 @@
 
 ### How did I decide which technologies to use as part of the solution
 I have chosen NextJS main to be able to try the ISR (SSG and SSR) out.
+
 Using the getStaticProps to prepare the date before renders the page and getStaticPaths to define the pages to be rendered at build time.
 Caching route by demand is a great feature in my opinion as well, you can see it working by fetch any not pre-fetched route e.g (/mission-detail/xx) where "xx" can be a number between 10 and 99
-It's great to see the both worlds (front/back) working together and how it can provide better performance, better search engine optimisation, file-system routing. The structure itself can promote a  rapid feature development, maintainability and scalability.
+
+It's great to see the both worlds (front/back) working together and how it can provide better performance, better search engine optimisation, file-system routing. The structure itself can promote a rapid feature development, better way to split data handling, still using React which is known by most of the developers.
+
+I am using BULMA as a CSS Framework to give it a bit of help and I skiped the usage of a pre-built components in order to do a bit styling myself, I am also using styled components rendering on the server side, on the codebase you can see that there is a Theme file, this object is passing through all components that any component can be styled using the theme colors variables.
 
 ### Improvements to be made
 They are all listed on the TODO list below.
@@ -53,7 +57,8 @@ TODO
 - [x] Components
 - [x] Styling
 - [x] Jest
-- [ ] Unit Tests (50% Done)
+- [x] Unit Tests (Components)
+- [ ] More Unit Tests (Extra!)
 - [ ] Cypress E2E Tests (Extra!)
 - [ ] Docker environment (Extra!)
 - [ ] Husky pre-commit (Eslint/Prettier/Jest) (Extra!)
