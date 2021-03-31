@@ -5,15 +5,10 @@ import { GetStaticProps } from 'next'
 import { MissionList } from '../components/MissionList/index'
 import Error from 'next/error'
 
-type IError = {
-  code: number
-  message: string
-}
-
 export interface MissionPageProps {
   missions: ILaunch[]
   loading: boolean
-  error: IError
+  error: string | undefined
 }
 
 export const getStaticProps: GetStaticProps = async context => {
@@ -21,19 +16,18 @@ export const getStaticProps: GetStaticProps = async context => {
     limit: 10
   })
 
-  if (!res || res.error) {
+  if (res === undefined || res.error) {
     return {
       props: {
-        error: {
-          code: 500,
-          message:
-            res && res.error ? res.error.message : 'Internal Server Error'
-        }
-      }
+        loading: false,
+        error: '500',
+        missions: [] as ILaunch
+      },
+      revalidate: 24 * 60 * 60
     }
   }
 
-  const { loading, error, data } = res
+  const { loading, error = null, data } = res
 
   return {
     props: {
@@ -45,13 +39,9 @@ export const getStaticProps: GetStaticProps = async context => {
   }
 }
 const MissionPage: React.FC<MissionPageProps> = (props: MissionPageProps) => {
-  if (props.error) {
-    return (
-      <Error title={props.error.message} statusCode={props.error.code}></Error>
-    )
-  }
-
-  return (
+  return props.error ? (
+    <Error statusCode={500} />
+  ) : (
     <section className="hero is-fullheight">
       <div className="hero-body">
         <MissionList missions={props.missions}></MissionList>
